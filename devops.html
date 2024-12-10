@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Scoreboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        .scoreboard {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        .team {
+            margin-bottom: 20px;
+        }
+
+        .team h2 {
+            font-size: 2em;
+            color: #007bff;
+        }
+
+        .team p {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            font-size: 1em;
+            padding: 10px 20px;
+            border: none;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scoreboard">
+        <h1>Cricket Scoreboard</h1>
+        <div class="team">
+            <h2>Team 1</h2>
+            <p>Runs: <span id="team1-runs">0</span></p>
+            <p>Wickets: <span id="team1-wickets">0</span></p>
+            <p>Overs: <span id="team1-overs">0</span></p>
+        </div>
+
+        <div class="team">
+            <h2>Team 2</h2>
+            <p>Runs: <span id="team2-runs">0</span></p>
+            <p>Wickets: <span id="team2-wickets">0</span></p>
+            <p>Overs: <span id="team2-overs">0</span></p>
+        </div>
+
+        <div class="controls">
+            <button onclick="updateScore('team1', 'runs')">Team 1 Run</button>
+            <button onclick="updateScore('team1', 'wickets')">Team 1 Wicket</button>
+            <button onclick="updateScore('team1', 'overs')">Team 1 Over</button>
+            
+            <button onclick="updateScore('team2', 'runs')">Team 2 Run</button>
+            <button onclick="updateScore('team2', 'wickets')">Team 2 Wicket</button>
+            <button onclick="updateScore('team2', 'overs')">Team 2 Over</button>
+        </div>
+    </div>
+
+    <script>
+        let team1 = {
+            runs: 0,
+            wickets: 0,
+            overs: 0
+        };
+
+        let team2 = {
+            runs: 0,
+            wickets: 0,
+            overs: 0
+        };
+
+        function updateScore(team, type) {
+            if (team === 'team1') {
+                if (type === 'runs') {
+                    team1.runs += Math.floor(Math.random() * 7); // Random runs (0-6)
+                } else if (type === 'wickets') {
+                    team1.wickets += 1;
+                } else if (type === 'overs') {
+                    team1.overs += 0.1; // Increment overs by 0.1 (for simplicity)
+                }
+                document.getElementById('team1-runs').textContent = team1.runs;
+                document.getElementById('team1-wickets').textContent = team1.wickets;
+                document.getElementById('team1-overs').textContent = team1.overs.toFixed(1);
+            } else if (team === 'team2') {
+                if (type === 'runs') {
+                    team2.runs += Math.floor(Math.random() * 7); // Random runs (0-6)
+                } else if (type === 'wickets') {
+                    team2.wickets += 1;
+                } else if (type === 'overs') {
+                    team2.overs += 0.1; // Increment overs by 0.1 (for simplicity)
+                }
+                document.getElementById('team2-runs').textContent = team2.runs;
+                document.getElementById('team2-wickets').textContent = team2.wickets;
+                document.getElementById('team2-overs').textContent = team2.overs.toFixed(1);
+            }
+        }
+    </script>
+
+</body>
+</html>
